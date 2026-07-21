@@ -6,10 +6,11 @@ import BookNowScreen from './screens/BookNowScreen'
 import MyBookingsScreen from './screens/MyBookingsScreen'
 import RewardsScreen from './screens/RewardsScreen'
 import ProfileScreen from './screens/ProfileScreen'
+import { CustomerStore } from './store'
 
 const CustomerApp: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#f8fafc] pb-20">
+    <CustomerStore><div className="min-h-screen bg-[#f8fafc] pb-24">
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/book" element={<BookNowScreen />} />
@@ -20,7 +21,7 @@ const CustomerApp: React.FC = () => {
       </Routes>
       
       <BottomNav />
-    </div>
+    </div></CustomerStore>
   )
 }
 

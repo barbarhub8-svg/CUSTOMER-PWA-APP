@@ -12,7 +12,7 @@ const BottomNav: React.FC = () => {
   ]
 
   return (
-    <nav className="bottom-nav flex items-center justify-around bg-white py-2 px-1 border-t border-[#e2e8f0]">
+    <nav className="bottom-nav flex items-center justify-around bg-white py-2 px-1 border-t border-[#dfe7e3]">
       {navItems.map((item) => (
         <NavLink
           key={item.to}
@@ -20,7 +20,7 @@ const BottomNav: React.FC = () => {
           className={({ isActive }) =>
             `flex flex-col items-center justify-center py-1 px-3 text-xs transition-colors tap-target ${
               isActive 
-                ? 'text-[#2563eb]' 
+                ? 'text-[#0c8f68]'
                 : 'text-[#64748b] hover:text-[#334155]'
             }`
           }
