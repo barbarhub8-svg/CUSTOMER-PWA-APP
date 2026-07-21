@@ -1,5 +1,7 @@
-import React from 'react'
-import { ArrowDownLeft, ArrowUpRight, Copy, Gift, Sparkles, Users } from 'lucide-react'
+import { ArrowDownLeft, ArrowUpRight, Gift, Sparkles } from 'lucide-react'
+import { useCustomerStore } from '../store'
 
-const RewardsScreen: React.FC=()=>{const copy=()=>navigator.clipboard?.writeText('NEXORA-RK20');return <main className="page"><header className="top-title"><p className="eyebrow">NEXORA REWARDS</p><h1>Rewards wallet</h1></header><section className="wallet"><div><small>Available balance</small><strong>₹460</strong><p>Earn more every time you book</p></div><Sparkles/></section><div className="stats"><div><span><ArrowDownLeft/></span><b>₹1,240</b><small>Lifetime earned</small></div><div><span><ArrowUpRight/></span><b>₹780</b><small>Redeemed</small></div></div><section className="refer"><span><Users/></span><p className="eyebrow">REFER & EARN</p><h2>Give ₹100, get ₹100</h2><p>Share your code with friends. You both get rewarded after their first booking.</p><button onClick={copy}>NEXORA-RK20 <Copy size={17}/></button></section><div className="section-heading mt-8"><h2>Recent activity</h2><span>View all</span></div><div className="activity"><div><span><Gift/></span><div><b>Booking reward</b><small>Glamour Studio · 18 Jun</small></div><strong>+ ₹80</strong></div><div><span><Sparkles/></span><div><b>Welcome bonus</b><small>10 Jun 2026</small></div><strong>+ ₹100</strong></div></div></main>}
-export default RewardsScreen
+export default function RewardsScreen() {
+  const { rewards, loading } = useCustomerStore()
+  return <main className="page"><header className="top-title"><p className="eyebrow">NEXORA REWARDS</p><h1>Rewards wallet</h1></header><section className="wallet"><div><small>Available balance</small><strong>₹{loading ? '—' : rewards.available}</strong><p>Earn more every time you book</p></div><Sparkles/></section><div className="stats"><div><span><ArrowDownLeft/></span><b>₹{rewards.earned}</b><small>Lifetime earned</small></div><div><span><ArrowUpRight/></span><b>₹{rewards.redeemed}</b><small>Redeemed</small></div></div><div className="empty"><Gift/><h3>Your live rewards activity</h3><p>Rewards earned from completed bookings will appear here.</p></div></main>
+}
